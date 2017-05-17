@@ -1,9 +1,10 @@
 package com.company.launchmodemasterassis.data;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 
 import com.company.launchmodemasterassis.Assis_SingleInstance_D1_Activity;
@@ -11,6 +12,8 @@ import com.company.launchmodemasterassis.Assis_SingleTask_C1_Activity;
 import com.company.launchmodemasterassis.Assis_SingleTop_B1_Activity;
 import com.company.launchmodemasterassis.Assis_Standard_A1_Activity;
 import com.company.launchmodemasterassis.AssisConstants;
+import com.company.launchmodemasterassis.MasterAssisApplication;
+import com.company.launchmodemasterassis.R;
 import com.company.launchmodemasterassis.Utils;
 import com.company.launchmodemasterassis.domain.ActivityContent;
 
@@ -43,29 +46,45 @@ public class ActivityStartManager {
         displayActivityList.add(new ActivityContent(AssisConstants.ASSIS_SINGLE_TASK_C1, "Normal"));
         displayActivityList.add(new ActivityContent(AssisConstants.ASSIS_SINGLE_INSTANCE_D1, "Normal"));
 
-        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A1, "Other App Normal"));
-        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A2, "Other App Normal"));
-        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A3, "Other App taskAffinity = :new_one"));
-        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A4, "Other App taskAffinity = com.company.new_two"));
-        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A5, "Other App process = :work"));
+        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A1, "Normal"));
+        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A2, "taskAffinity = ${applicationId}"));
+        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A3, "taskAffinity = :carry"));
+        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A4, "taskAffinity = com.hero.support"));
+        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A5, "process = :work"));
+        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A6, "allowTaskReparenting = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A7, "alwaysRetainTaskState = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A8, "clearTaskOnLaunch = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A9, "finishOnTaskLaunch = true"));
 
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B1, "Other App Normal"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B2, "Other App Normal"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B3, "Other App taskAffinity = :new_one"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B4, "Other App taskAffinity = com.company.new_two"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B5, "Other App process = :work"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B1, "Normal"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B2, "taskAffinity = ${applicationId}"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B3, "taskAffinity = :carry"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B4, "taskAffinity = com.hero.support"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B5, "process = :work"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B6, "allowTaskReparenting = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B7, "alwaysRetainTaskState = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B8, "clearTaskOnLaunch = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B9, "finishOnTaskLaunch = true"));
 
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C1, "Other App Normal"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C2, "Other App Normal"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C3, "Other App taskAffinity = :new_one"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C4, "Other App taskAffinity = com.company.new_two"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C5, "Other App process = :work"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C1, "Normal"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C2, "taskAffinity = ${applicationId}"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C3, "taskAffinity = :carry"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C4, "taskAffinity = com.hero.support"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C5, "process = :work"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C6, "allowTaskReparenting = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C7, "alwaysRetainTaskState = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C8, "clearTaskOnLaunch = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C9, "finishOnTaskLaunch = true"));
 
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D1, "Other App Normal"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D2, "Other App Normal"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D3, "Other App taskAffinity = :new_one"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D4, "Other App taskAffinity = com.company.new_two"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D5, "Other App process = :work"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D1, "Normal"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D2, "taskAffinity = ${applicationId}"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D3, "taskAffinity = :carry"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D4, "taskAffinity = com.hero.support"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D5, "process = :work"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D6, "allowTaskReparenting = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D7, "alwaysRetainTaskState = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D8, "clearTaskOnLaunch = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D9, "finishOnTaskLaunch = true"));
 
     }
 
@@ -103,243 +122,545 @@ public class ActivityStartManager {
             case AssisConstants.ASSIS_STANDARD_A1:
                 if (isForResult) {
                     activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
-                            new Intent(activity, Assis_Standard_A1_Activity.class)), 1);
+                        new Intent(activity, Assis_Standard_A1_Activity.class)), 1);
                 } else {
                     activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
-                            new Intent(activity, Assis_Standard_A1_Activity.class)));
+                        new Intent(activity, Assis_Standard_A1_Activity.class)));
                 }
                 break;
 
             case AssisConstants.ASSIS_SINGLE_TOP_B1:
                 if (isForResult) {
                     activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
-                            new Intent(activity, Assis_SingleTop_B1_Activity.class)), 1);
+                        new Intent(activity, Assis_SingleTop_B1_Activity.class)), 1);
                 } else {
                     activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
-                            new Intent(activity, Assis_SingleTop_B1_Activity.class)));
+                        new Intent(activity, Assis_SingleTop_B1_Activity.class)));
                 }
                 break;
 
             case AssisConstants.ASSIS_SINGLE_TASK_C1:
                 if (isForResult) {
                     activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
-                            new Intent(activity, Assis_SingleTask_C1_Activity.class)), 1);
+                        new Intent(activity, Assis_SingleTask_C1_Activity.class)), 1);
                 } else {
                     activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
-                            new Intent(activity, Assis_SingleTask_C1_Activity.class)));
+                        new Intent(activity, Assis_SingleTask_C1_Activity.class)));
                 }
                 break;
 
             case AssisConstants.ASSIS_SINGLE_INSTANCE_D1:
                 if (isForResult) {
                     activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
-                            new Intent(activity, Assis_SingleInstance_D1_Activity.class)), 1);
+                        new Intent(activity, Assis_SingleInstance_D1_Activity.class)), 1);
                 } else {
                     activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
-                            new Intent(activity, Assis_SingleInstance_D1_Activity.class)));
+                        new Intent(activity, Assis_SingleInstance_D1_Activity.class)));
                 }
-
                 break;
 
-
             case AssisConstants.STANDARD_A1:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.STANDARD_A1").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.STANDARD_A1").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
-
                 break;
 
             case AssisConstants.STANDARD_A2:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.STANDARD_A2").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.STANDARD_A2").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case AssisConstants.STANDARD_A3:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.STANDARD_A3").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.STANDARD_A3").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case AssisConstants.STANDARD_A4:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.STANDARD_A4").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.STANDARD_A4").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case AssisConstants.STANDARD_A5:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.STANDARD_A5").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.STANDARD_A5").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case AssisConstants.STANDARD_A6:
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.STANDARD_A6").addCategory(Intent.CATEGORY_DEFAULT)), 1);
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.STANDARD_A6").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case AssisConstants.STANDARD_A7:
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.STANDARD_A7").addCategory(Intent.CATEGORY_DEFAULT)), 1);
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.STANDARD_A7").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case AssisConstants.STANDARD_A8:
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.STANDARD_A8").addCategory(Intent.CATEGORY_DEFAULT)), 1);
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.STANDARD_A8").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case AssisConstants.STANDARD_A9:
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.STANDARD_A9").addCategory(Intent.CATEGORY_DEFAULT)), 1);
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.STANDARD_A9").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case AssisConstants.SINGLE_TOP_B1:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TOP_B1").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TOP_B1").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case AssisConstants.SINGLE_TOP_B2:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TOP_B2").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TOP_B2").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
+
                 break;
 
             case AssisConstants.SINGLE_TOP_B3:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TOP_B3").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TOP_B3").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case AssisConstants.SINGLE_TOP_B4:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TOP_B4").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TOP_B4").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case AssisConstants.SINGLE_TOP_B5:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TOP_B5").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TOP_B5").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case AssisConstants.SINGLE_TOP_B6:
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_TOP_B6").addCategory(Intent.CATEGORY_DEFAULT)), 1);
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_TOP_B6").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case AssisConstants.SINGLE_TOP_B7:
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_TOP_B7").addCategory(Intent.CATEGORY_DEFAULT)), 1);
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_TOP_B7").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case AssisConstants.SINGLE_TOP_B8:
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_TOP_B8").addCategory(Intent.CATEGORY_DEFAULT)), 1);
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_TOP_B8").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case AssisConstants.SINGLE_TOP_B9:
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_TOP_B9").addCategory(Intent.CATEGORY_DEFAULT)), 1);
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_TOP_B9").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case AssisConstants.SINGLE_TASK_C1:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TASK_C1").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TASK_C1").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case AssisConstants.SINGLE_TASK_C2:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TASK_C2").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TASK_C2").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case AssisConstants.SINGLE_TASK_C3:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TASK_C3").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TASK_C3").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case AssisConstants.SINGLE_TASK_C4:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TASK_C4").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TASK_C4").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case AssisConstants.SINGLE_TASK_C5:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TASK_C5").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TASK_C5").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case AssisConstants.SINGLE_TASK_C6:
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_TASK_C6").addCategory(Intent.CATEGORY_DEFAULT)), 1);
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_TASK_C6").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case AssisConstants.SINGLE_TASK_C7:
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_TASK_C7").addCategory(Intent.CATEGORY_DEFAULT)), 1);
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_TASK_C7").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case AssisConstants.SINGLE_TASK_C8:
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_TASK_C8").addCategory(Intent.CATEGORY_DEFAULT)), 1);
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_TASK_C8").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case AssisConstants.SINGLE_TASK_C9:
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_TASK_C9").addCategory(Intent.CATEGORY_DEFAULT)), 1);
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_TASK_C9").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case AssisConstants.SINGLE_INSTANCE_D1:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_INSTANCE_D1").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_INSTANCE_D1").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case AssisConstants.SINGLE_INSTANCE_D2:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_INSTANCE_D2").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_INSTANCE_D2").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case AssisConstants.SINGLE_INSTANCE_D3:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_INSTANCE_D3").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_INSTANCE_D3").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case AssisConstants.SINGLE_INSTANCE_D4:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_INSTANCE_D4").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_INSTANCE_D4").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
                 break;
 
             case AssisConstants.SINGLE_INSTANCE_D5:
-                if (isForResult) {
-                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_INSTANCE_D5").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                } else {
-                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_INSTANCE_D5").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case AssisConstants.SINGLE_INSTANCE_D6:
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_INSTANCE_D6").addCategory(Intent.CATEGORY_DEFAULT)), 1);
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_INSTANCE_D6").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case AssisConstants.SINGLE_INSTANCE_D7:
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_INSTANCE_D7").addCategory(Intent.CATEGORY_DEFAULT)), 1);
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_INSTANCE_D7").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case AssisConstants.SINGLE_INSTANCE_D8:
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_INSTANCE_D8").addCategory(Intent.CATEGORY_DEFAULT)), 1);
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_INSTANCE_D8").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+            case AssisConstants.SINGLE_INSTANCE_D9:
+                try {
+                    if (isForResult) {
+                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_INSTANCE_D9").addCategory(Intent.CATEGORY_DEFAULT)), 1);
+                    } else {
+                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                            new Intent("launch_mode_master.SINGLE_INSTANCE_D9").addCategory(Intent.CATEGORY_DEFAULT)));
+                    }
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
                 }
                 break;
 
