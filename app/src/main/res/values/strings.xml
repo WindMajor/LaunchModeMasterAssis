@@ -8,9 +8,13 @@
     <string name="main_activity_title">MainActivity</string>
 
     <string name="assis_standard_a1_activity_title">Assis_Standard_A1_Activity</string>
+    <string name="assis_standard_a2_activity_title">Assis_Standard_A2_Activity</string>
     <string name="assis_single_top_b1_activity_title">Assis_SingleTop_B1_Activity</string>
+    <string name="assis_single_top_b2_activity_title">Assis_SingleTop_B2_Activity</string>
     <string name="assis_single_task_c1_activity_title">Assis_SingleTask_C1_Activity</string>
+    <string name="assis_single_task_c2_activity_title">Assis_SingleTask_C2_Activity</string>
     <string name="assis_single_instance_d1_activity_title">Assis_SingleInstance_D1_Activity</string>
+    <string name="assis_single_instance_d2_activity_title">Assis_SingleInstance_D2_Activity</string>
 
 
     <string name="start_standard">A_Standard</string>

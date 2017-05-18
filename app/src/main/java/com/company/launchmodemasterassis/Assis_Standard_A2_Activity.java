@@ -1,14 +1,13 @@
 package com.company.launchmodemasterassis;
 
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 /**
- * Created by wangmeng on 17/4/26.
+ * Created by wangmeng on 17/5/18.
  */
 
-public class Assis_SingleTop_B1_Activity extends BaseActivity {
+public class Assis_Standard_A2_Activity extends BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -17,6 +16,6 @@ public class Assis_SingleTop_B1_Activity extends BaseActivity {
 
     @Override
     protected void setToolbarTitle() {
-        toolbar.setTitle(R.string.assis_single_top_b1_activity_title);
+        toolbar.setTitle(R.string.assis_standard_a2_activity_title);
     }
 }

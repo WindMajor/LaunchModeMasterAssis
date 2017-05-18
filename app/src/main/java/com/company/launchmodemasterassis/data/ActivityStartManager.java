@@ -8,10 +8,14 @@ import android.widget.Toast;
 
 
 import com.company.launchmodemasterassis.Assis_SingleInstance_D1_Activity;
+import com.company.launchmodemasterassis.Assis_SingleInstance_D2_Activity;
 import com.company.launchmodemasterassis.Assis_SingleTask_C1_Activity;
+import com.company.launchmodemasterassis.Assis_SingleTask_C2_Activity;
 import com.company.launchmodemasterassis.Assis_SingleTop_B1_Activity;
+import com.company.launchmodemasterassis.Assis_SingleTop_B2_Activity;
 import com.company.launchmodemasterassis.Assis_Standard_A1_Activity;
 import com.company.launchmodemasterassis.AssisConstants;
+import com.company.launchmodemasterassis.Assis_Standard_A2_Activity;
 import com.company.launchmodemasterassis.MasterAssisApplication;
 import com.company.launchmodemasterassis.R;
 import com.company.launchmodemasterassis.Utils;
@@ -42,9 +46,13 @@ public class ActivityStartManager {
         currentActivityName = AssisConstants.ASSIS_STANDARD_A1;
 
         displayActivityList.add(new ActivityContent(AssisConstants.ASSIS_STANDARD_A1, "Normal"));
+        displayActivityList.add(new ActivityContent(AssisConstants.ASSIS_STANDARD_A2, "taskAffinity = com.hero.support"));
         displayActivityList.add(new ActivityContent(AssisConstants.ASSIS_SINGLE_TOP_B1, "Normal"));
+        displayActivityList.add(new ActivityContent(AssisConstants.ASSIS_SINGLE_TOP_B2, "taskAffinity = com.hero.support"));
         displayActivityList.add(new ActivityContent(AssisConstants.ASSIS_SINGLE_TASK_C1, "Normal"));
+        displayActivityList.add(new ActivityContent(AssisConstants.ASSIS_SINGLE_TASK_C2, "taskAffinity = com.hero.support"));
         displayActivityList.add(new ActivityContent(AssisConstants.ASSIS_SINGLE_INSTANCE_D1, "Normal"));
+        displayActivityList.add(new ActivityContent(AssisConstants.ASSIS_SINGLE_INSTANCE_D2, "taskAffinity = com.hero.support"));
 
         displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A1, "Normal"));
         displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A2, "taskAffinity = ${applicationId}"));
@@ -129,6 +137,16 @@ public class ActivityStartManager {
                 }
                 break;
 
+            case AssisConstants.ASSIS_STANDARD_A2:
+                if (isForResult) {
+                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                        new Intent(activity, Assis_Standard_A2_Activity.class)), 1);
+                } else {
+                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                        new Intent(activity, Assis_Standard_A2_Activity.class)));
+                }
+                break;
+
             case AssisConstants.ASSIS_SINGLE_TOP_B1:
                 if (isForResult) {
                     activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
@@ -136,6 +154,16 @@ public class ActivityStartManager {
                 } else {
                     activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                         new Intent(activity, Assis_SingleTop_B1_Activity.class)));
+                }
+                break;
+
+            case AssisConstants.ASSIS_SINGLE_TOP_B2:
+                if (isForResult) {
+                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                        new Intent(activity, Assis_SingleTop_B2_Activity.class)), 1);
+                } else {
+                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                        new Intent(activity, Assis_SingleTop_B2_Activity.class)));
                 }
                 break;
 
@@ -149,6 +177,16 @@ public class ActivityStartManager {
                 }
                 break;
 
+            case AssisConstants.ASSIS_SINGLE_TASK_C2:
+                if (isForResult) {
+                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                        new Intent(activity, Assis_SingleTask_C2_Activity.class)), 1);
+                } else {
+                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                        new Intent(activity, Assis_SingleTask_C2_Activity.class)));
+                }
+                break;
+
             case AssisConstants.ASSIS_SINGLE_INSTANCE_D1:
                 if (isForResult) {
                     activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
@@ -158,6 +196,17 @@ public class ActivityStartManager {
                         new Intent(activity, Assis_SingleInstance_D1_Activity.class)));
                 }
                 break;
+
+            case AssisConstants.ASSIS_SINGLE_INSTANCE_D2:
+                if (isForResult) {
+                    activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                        new Intent(activity, Assis_SingleInstance_D2_Activity.class)), 1);
+                } else {
+                    activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
+                        new Intent(activity, Assis_SingleInstance_D2_Activity.class)));
+                }
+                break;
+
 
             case AssisConstants.STANDARD_A1:
                 try {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.company.launchmodemasterassis"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.company.launchmodemasterassis">
 
     <uses-permission android:name="android.permission.GET_TASKS"/>
 
@@ -12,19 +12,28 @@
         android:roundIcon="@drawable/svg_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AssisMainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
         <activity
             android:name=".Assis_Standard_A1_Activity"
             android:exported="true"
             android:launchMode="standard">
             <intent-filter>
                 <action android:name="launch_mode_master_assis.STANDARD_A1"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".Assis_Standard_A2_Activity"
+            android:exported="true"
+            android:launchMode="standard"
+            android:taskAffinity="com.hero.support">
+            <intent-filter>
+                <action android:name="launch_mode_master_assis.STANDARD_A2"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
@@ -38,6 +47,18 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".Assis_SingleTop_B2_Activity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity="com.hero.support">
+            <intent-filter>
+                <action android:name="launch_mode_master_assis.SINGLE_TOP_B2"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".Assis_SingleTask_C1_Activity"
             android:exported="true"
@@ -47,12 +68,35 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".Assis_SingleTask_C2_Activity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.hero.support">
+            <intent-filter>
+                <action android:name="launch_mode_master_assis.SINGLE_TASK_C2"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".Assis_SingleInstance_D1_Activity"
             android:exported="true"
             android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="launch_mode_master_assis.SINGLE_INSTANCE_D1"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".Assis_SingleInstance_D2_Activity"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:taskAffinity="com.hero.support">
+            <intent-filter>
+                <action android:name="launch_mode_master_assis.SINGLE_INSTANCE_D2"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
