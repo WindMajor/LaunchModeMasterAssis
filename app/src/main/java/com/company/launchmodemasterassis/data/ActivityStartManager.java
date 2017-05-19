@@ -60,9 +60,8 @@ public class ActivityStartManager {
         displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A4, "taskAffinity = com.hero.support"));
         displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A5, "process = :work"));
         displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A6, "allowTaskReparenting = true"));
-        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A7, "alwaysRetainTaskState = true"));
-        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A8, "clearTaskOnLaunch = true"));
-        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A9, "finishOnTaskLaunch = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A7, "finishOnTaskLaunch = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.STANDARD_A8, "excludeFromRecents = true"));
 
         displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B1, "Normal"));
         displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B2, "taskAffinity = ${applicationId}"));
@@ -70,9 +69,8 @@ public class ActivityStartManager {
         displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B4, "taskAffinity = com.hero.support"));
         displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B5, "process = :work"));
         displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B6, "allowTaskReparenting = true"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B7, "alwaysRetainTaskState = true"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B8, "clearTaskOnLaunch = true"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B9, "finishOnTaskLaunch = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B7, "finishOnTaskLaunch = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TOP_B8, "excludeFromRecents = true"));
 
         displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C1, "Normal"));
         displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C2, "taskAffinity = ${applicationId}"));
@@ -80,9 +78,8 @@ public class ActivityStartManager {
         displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C4, "taskAffinity = com.hero.support"));
         displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C5, "process = :work"));
         displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C6, "allowTaskReparenting = true"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C7, "alwaysRetainTaskState = true"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C8, "clearTaskOnLaunch = true"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C9, "finishOnTaskLaunch = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C7, "finishOnTaskLaunch = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_TASK_C8, "excludeFromRecents = true"));
 
         displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D1, "Normal"));
         displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D2, "taskAffinity = ${applicationId}"));
@@ -90,9 +87,8 @@ public class ActivityStartManager {
         displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D4, "taskAffinity = com.hero.support"));
         displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D5, "process = :work"));
         displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D6, "allowTaskReparenting = true"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D7, "alwaysRetainTaskState = true"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D8, "clearTaskOnLaunch = true"));
-        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D9, "finishOnTaskLaunch = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D7, "finishOnTaskLaunch = true"));
+        displayActivityList.add(new ActivityContent(AssisConstants.SINGLE_INSTANCE_D8, "excludeFromRecents = true"));
 
     }
 
@@ -320,20 +316,6 @@ public class ActivityStartManager {
                 }
                 break;
 
-            case AssisConstants.STANDARD_A9:
-                try {
-                    if (isForResult) {
-                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
-                            new Intent("launch_mode_master.STANDARD_A9").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                    } else {
-                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
-                            new Intent("launch_mode_master.STANDARD_A9").addCategory(Intent.CATEGORY_DEFAULT)));
-                    }
-                } catch (ActivityNotFoundException e) {
-                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
-                }
-                break;
-
             case AssisConstants.SINGLE_TOP_B1:
                 try {
                     if (isForResult) {
@@ -441,20 +423,6 @@ public class ActivityStartManager {
                     } else {
                         activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_TOP_B8").addCategory(Intent.CATEGORY_DEFAULT)));
-                    }
-                } catch (ActivityNotFoundException e) {
-                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
-                }
-                break;
-
-            case AssisConstants.SINGLE_TOP_B9:
-                try {
-                    if (isForResult) {
-                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
-                            new Intent("launch_mode_master.SINGLE_TOP_B9").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                    } else {
-                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
-                            new Intent("launch_mode_master.SINGLE_TOP_B9").addCategory(Intent.CATEGORY_DEFAULT)));
                     }
                 } catch (ActivityNotFoundException e) {
                     Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
@@ -573,20 +541,6 @@ public class ActivityStartManager {
                 }
                 break;
 
-            case AssisConstants.SINGLE_TASK_C9:
-                try {
-                    if (isForResult) {
-                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
-                            new Intent("launch_mode_master.SINGLE_TASK_C9").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                    } else {
-                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
-                            new Intent("launch_mode_master.SINGLE_TASK_C9").addCategory(Intent.CATEGORY_DEFAULT)));
-                    }
-                } catch (ActivityNotFoundException e) {
-                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
-                }
-                break;
-
             case AssisConstants.SINGLE_INSTANCE_D1:
                 try {
                     if (isForResult) {
@@ -693,20 +647,6 @@ public class ActivityStartManager {
                     } else {
                         activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
                             new Intent("launch_mode_master.SINGLE_INSTANCE_D8").addCategory(Intent.CATEGORY_DEFAULT)));
-                    }
-                } catch (ActivityNotFoundException e) {
-                    Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
-                }
-                break;
-
-            case AssisConstants.SINGLE_INSTANCE_D9:
-                try {
-                    if (isForResult) {
-                        activity.startActivityForResult(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
-                            new Intent("launch_mode_master.SINGLE_INSTANCE_D9").addCategory(Intent.CATEGORY_DEFAULT)), 1);
-                    } else {
-                        activity.startActivity(Utils.addFlagToIntent(LaunchFlagManager.getInstance().getCheckedFlagList(),
-                            new Intent("launch_mode_master.SINGLE_INSTANCE_D9").addCategory(Intent.CATEGORY_DEFAULT)));
                     }
                 } catch (ActivityNotFoundException e) {
                     Toast.makeText(MasterAssisApplication.getContext(), R.string.toast_hint_install_launch_mode_app, Toast.LENGTH_SHORT).show();
